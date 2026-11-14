@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mind & Technology</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Poppins:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#05333F}
+a{color:#99CCFF;text-decoration:none}
+a:hover{color:#FFFFFF}
+a:focus-visible{outline:2px solid #99CCFF;outline-offset:3px}
+html{scroll-behavior:smooth}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(0,-12px) rotate(5deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@media (prefers-reduced-motion:no-preference){
+#inicio > div > *{animation:rise .9s cubic-bezier(.2,.7,.2,1) backwards}
+#inicio > div > *:nth-child(2){animation-delay:.12s}
+#inicio > div > *:nth-child(3){animation-delay:.24s}
+#inicio > div > *:nth-child(4){animation-delay:.36s}
+#inicio > div > *:nth-child(5){animation-delay:.48s}
+#inicio > svg polygon{transform-box:fill-box;transform-origin:center;animation:drift 7s ease-in-out infinite}
+#inicio > svg polygon:nth-child(2){animation-duration:8.5s;animation-delay:-1.5s}
+#inicio > svg polygon:nth-child(3){animation-duration:9s;animation-delay:-3s}
+#inicio > svg polygon:nth-child(4){animation-duration:7.5s;animation-delay:-4.5s}
+#inicio > svg polygon:nth-child(5){animation-duration:10s;animation-delay:-2s}
+#nosotros svg[role=img]{animation:floaty 6s ease-in-out infinite}
+#objetivos svg{transform-box:fill-box;transform-origin:center;animation:pulse 4s ease-in-out infinite}
+header nav a{position:relative}
+header nav a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:#99CCFF;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+header nav a:hover::after{transform:scaleX(1)}
+#inicio > div > div a{transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease,border-color .25s ease}
+#inicio > div > div a:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+#inicio > div > div a:first-child:hover{background:#FFFFFF !important}
+#inicio > div > div a:last-child:hover{border-color:#99CCFF !important}
+article,#equipo li{transition:transform .3s ease,box-shadow .3s ease,background-color .3s ease}
+article:hover,#equipo li:hover{transform:translateY(-6px)}
+#vision-mision article:hover{box-shadow:0 14px 30px rgba(0,0,0,.35);background:#0B4D5C !important}
+#equipo li:hover{background:#0B4D5C !important;box-shadow:0 10px 22px rgba(0,0,0,.35)}
+#valores article{transition:transform .3s ease,border-color .3s ease}
+#valores article:hover{border-top-color:#FFFFFF !important}
+}
+@media (prefers-reduced-motion:no-preference){
+@supports (animation-timeline: view()){
+#nosotros h2,#nosotros p,#nosotros svg[role=img],#vision-mision h2,#vision-mision article,#objetivos h2,#objetivos > div > div > div,#valores h2,#valores article,#sociologia h2,#sociologia h3,#sociologia article,#etnografia h2,#etnografia article,#etnografia ul,#axiologia h2,#axiologia ol,#axiologia article,#axiologia .fila,#equipo h2,#equipo li{animation-name:rise;animation-timing-function:linear;animation-fill-mode:backwards;animation-duration:1ms;animation-timeline:view();animation-range:entry 0% entry 40%}
+#nosotros svg[role=img]{animation-name:rise,floaty;animation-duration:1ms,6s;animation-timeline:view(),auto;animation-range:entry 0% entry 40%,normal;animation-iteration-count:1,infinite;animation-timing-function:linear,ease-in-out}
+}
+}
+</style>
+</helmet>
+<div style="background: #05333F; color: #D6E4EE; font-family: 'Open Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.65; min-height: 3300px; overflow: hidden">
+
+<!-- NAV -->
+<header style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#inicio" style="display: flex; align-items: center; gap: 12px; font-family: Poppins, sans-serif; font-weight: 600; font-size: 20px; color: #FFFFFF">
+<svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="20" fill="#45628F"></rect><rect x="20" y="26" width="60" height="52" rx="4" fill="#F2C867"></rect><rect x="26" y="20" width="48" height="50" rx="3" fill="#F7F7F7"></rect><polygon points="50,32 80,45 50,58 20,45" fill="#45628F"></polygon><path d="M33 52 v10 q17 11 34 0 v-10 l-17 8z" fill="#45628F"></path><rect x="28" y="46" width="3" height="14" rx="1.5" fill="#45628F"></rect></svg>
+<span>Mind &amp; Technology</span>
+</a>
+<nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-family: Poppins, sans-serif; font-size: 15px; font-weight: 500">
+<a href="#nosotros" style="padding: 10px 0">Nosotros</a>
+<a href="#vision-mision" style="padding: 10px 0">Visión y misión</a>
+<a href="#objetivos" style="padding: 10px 0">Objetivos</a>
+<a href="#valores" style="padding: 10px 0">Valores</a>
+<a href="#sociologia" style="padding: 10px 0">Sociología</a>
+<a href="#etnografia" style="padding: 10px 0">Etnografía</a>
+<a href="#axiologia" style="padding: 10px 0">Axiología</a>
+<a href="#equipo" style="padding: 10px 0">Equipo</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section id="inicio" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 72px 24px 96px; box-sizing: border-box">
+<svg aria-hidden="true" width="420" height="420" viewBox="0 0 420 420" style="position: absolute; right: 0; top: 24px; max-width: 45%; height: auto; opacity: 0.9">
+<polygon points="210,20 270,120 150,120" fill="#99BBDD"></polygon>
+<polygon points="300,150 380,290 220,290" fill="#5E7B94"></polygon>
+<polygon points="70,150 230,150 150,290" fill="#99BBDD" opacity="0.85"></polygon>
+<polygon points="110,310 170,410 50,410" fill="#5E7B94"></polygon>
+<polygon points="260,320 320,410 200,410" fill="#99BBDD"></polygon>
+</svg>
+<div style="position: relative; max-width: 680px; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #99CCFF">Plataforma educativa institucional</p>
+<h1 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(44px, 8vw, 92px); line-height: 1.02; color: #99CCFF; text-wrap: balance">Mind &amp; Technology</h1>
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: clamp(22px, 3vw, 32px); color: #FFFFFF">Educando al futuro</p>
+<p style="margin: 0; max-width: 56ch">Desarrollamos una plataforma para todos los niveles académicos donde los docentes comparten materiales de estudio y los estudiantes se preparan para sus exámenes con herramientas de inteligencia artificial.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
+<a href="#nosotros" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; box-sizing: border-box; background: #99CCFF; color: #05333F; font-family: Poppins, sans-serif; font-weight: 600; font-size: 16px; border-radius: 4px">Conocer la empresa</a>
+<a href="#equipo" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; box-sizing: border-box; border: 2px solid #5E7B94; color: #FFFFFF; font-family: Poppins, sans-serif; font-weight: 500; font-size: 16px; border-radius: 4px">Ver el equipo</a>
+</div>
+</div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" style="background: #08424F; border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #FFFFFF; text-wrap: balance"><span style="color: #99CCFF">Quiénes</span> somos</h2>
+<p style="margin: 0; max-width: 56ch">Somos una empresa dedicada al desarrollo de una plataforma educativa institucional para todos los niveles académicos.</p>
+<p style="margin: 0; max-width: 56ch">Con esta aplicación, los docentes pueden compartir materiales de estudio que ayudan a los estudiantes a fortalecer sus conocimientos y a prepararse para sus exámenes mediante herramientas de inteligencia artificial.</p>
+</div>
+<div style="flex: 0 1 340px; min-width: 0; display: flex; justify-content: center; width: 100%">
+<div style="width: 300px; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 50%; background: #F5F5F5; border: 8px solid #5E7B94; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+<svg role="img" aria-label="Logo de Mind &amp; Technology: un birrete sobre un libro abierto" width="58%" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="#45628F"></rect><rect x="20" y="26" width="60" height="52" rx="4" fill="#F2C867"></rect><rect x="26" y="20" width="48" height="50" rx="3" fill="#F7F7F7"></rect><polygon points="50,32 80,45 50,58 20,45" fill="#45628F"></polygon><path d="M33 52 v10 q17 11 34 0 v-10 l-17 8z" fill="#45628F"></path><rect x="28" y="46" width="3" height="14" rx="1.5" fill="#45628F"></rect></svg>
+</div>
+</div>
+</div>
+</section>
+
+<!-- VISION Y MISION -->
+<section id="vision-mision" style="border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #FFFFFF; text-wrap: balance"><span style="color: #99CCFF">Visión</span> y misión</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 24px">
+<article style="flex: 1 1 420px; min-width: 0; background: #08424F; border-radius: 8px; padding: 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 28px; color: #99CCFF">Visión</h3>
+<p style="margin: 0">Facilitar el aprendizaje de los estudiantes mediante herramientas de inteligencia artificial que transformen los contenidos educativos en experiencias de estudio dinámicas, personalizadas y accesibles.</p>
+</article>
+<article style="flex: 1 1 420px; min-width: 0; background: #08424F; border-radius: 8px; padding: 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 28px; color: #99CCFF">Misión</h3>
+<p style="margin: 0">Ser una plataforma educativa reconocida por instituciones académicas a nivel nacional e internacional, contribuyendo al desarrollo del aprendizaje mediante soluciones innovadoras basadas en inteligencia artificial.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- OBJETIVOS -->
+<section id="objetivos" style="background: #08424F; border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #99CCFF; text-wrap: balance">Objetivos</h2>
+<div style="display: flex; flex-direction: column">
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px 32px; padding: 32px 0; border-top: 1px solid #5E7B94">
+<div style="flex: 0 0 64px; width: 64px">
+<svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#99CCFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="28" cy="28" r="22"></circle><circle cx="28" cy="28" r="12"></circle><circle cx="28" cy="28" r="3" fill="#99CCFF"></circle></svg>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 26px; color: #FFFFFF">Desarrollar una plataforma educativa</h3>
+<p style="margin: 0; max-width: 62ch">Desarrollar una plataforma que permita a las instituciones, docentes y estudiantes gestionar contenidos académicos de manera sencilla y organizada.</p>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px 32px; padding: 32px 0; border-top: 1px solid #5E7B94">
+<div style="flex: 0 0 64px; width: 64px">
+<svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#99CCFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="28" cy="28" r="22"></circle><circle cx="28" cy="28" r="12"></circle><circle cx="28" cy="28" r="3" fill="#99CCFF"></circle></svg>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 26px; color: #FFFFFF">Personalizar actividades de estudio</h3>
+<p style="margin: 0; max-width: 62ch">Diseñar experiencias de aprendizaje adaptadas a las necesidades individuales de cada estudiante mediante sistemas inteligentes de recomendación y seguimiento académico.</p>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px 32px; padding: 32px 0; border-top: 1px solid #5E7B94; border-bottom: 1px solid #5E7B94">
+<div style="flex: 0 0 64px; width: 64px">
+<svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#99CCFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="28" cy="28" r="22"></circle><circle cx="28" cy="28" r="12"></circle><circle cx="28" cy="28" r="3" fill="#99CCFF"></circle></svg>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 26px; color: #FFFFFF">Uso responsable</h3>
+<p style="margin: 0; max-width: 62ch">Promover el uso ético y responsable de la inteligencia artificial como herramienta de apoyo educativo, evitando prácticas como el plagio y la copia de evaluaciones.</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- VALORES -->
+<section id="valores" style="border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #FFFFFF; text-wrap: balance">Valores <span style="color: #99CCFF">empresariales</span></h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px 32px">
+
+<article style="min-width: 0; display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 3px solid #99CCFF">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #99CCFF">Accesibilidad</h3>
+<p style="margin: 0">Diseñar una plataforma que pueda ser utilizada por estudiantes y docentes de todo el mundo, de distintos niveles académicos.</p>
+</article>
+
+<article style="min-width: 0; display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 3px solid #99CCFF">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #99CCFF">Innovación</h3>
+<p style="margin: 0">Impulsar la mejora continua mediante la adopción de nuevas tecnologías y metodologías educativas.</p>
+</article>
+
+<article style="min-width: 0; display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 3px solid #99CCFF">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #99CCFF">Ética</h3>
+<p style="margin: 0">Promover un uso transparente y responsable de la inteligencia artificial.</p>
+</article>
+
+<article style="min-width: 0; display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 3px solid #99CCFF">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #99CCFF">Seguridad</h3>
+<p style="margin: 0">Proteger los datos de los usuarios y resguardar la información frente al plagio y a su uso indebido.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- SOCIOLOGIA -->
+<section id="sociologia" style="background: #08424F; border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px">
+
+<div style="display: flex; flex-direction: column; gap: 20px; max-width: 760px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #99CCFF">Estudio sociológico</p>
+<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #FFFFFF; text-wrap: balance">Fundamentos <span style="color: #99CCFF">sociológicos</span></h2>
+<p style="margin: 0">La sociología estudia cómo las personas se organizan, se relacionan y construyen normas, roles e instituciones. Una empresa es un sistema social: su desempeño depende tanto de su tecnología y sus procesos como de la forma en que sus integrantes se comunican, se coordinan y comparten sentido.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px 32px">
+<article style="min-width: 0; display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 3px solid #99CCFF">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Max Weber</p>
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 22px; color: #FFFFFF">Acción social</h3>
+<p style="margin: 0">Las organizaciones se entienden desde el sentido que las personas dan a sus acciones, y se ordenan mediante reglas, jerarquías y autoridad legítima.</p>
+</article>
+<article style="min-width: 0; display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 3px solid #99CCFF">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Émile Durkheim</p>
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 22px; color: #FFFFFF">Hecho social</h3>
+<p style="margin: 0">Las normas y los valores compartidos existen fuera de cada individuo y lo orientan. La división del trabajo crea interdependencia y cohesión.</p>
+</article>
+<article style="min-width: 0; display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 3px solid #99CCFF">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Karl Marx</p>
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 22px; color: #FFFFFF">Estructura y trabajo</h3>
+<p style="margin: 0">Las relaciones de producción definen quién decide y quién ejecuta. Analizarlas ayuda a detectar tensiones, desigualdad y falta de sentido en el trabajo.</p>
+</article>
+<article style="min-width: 0; display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 3px solid #99CCFF">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Elton Mayo</p>
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 22px; color: #FFFFFF">Relaciones humanas</h3>
+<p style="margin: 0">Los estudios de Hawthorne mostraron que el reconocimiento, el grupo y la atención a las personas influyen en la productividad.</p>
+</article>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 32px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(26px, 3.5vw, 36px); line-height: 1.15; color: #FFFFFF; text-wrap: balance">Efectos en el <span style="color: #99CCFF">desempeño</span> de la organización</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px">
+
+<article style="min-width: 0; background: #05333F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Edgar Schein</p>
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Cultura organizacional</h4>
+<p style="margin: 0">Los símbolos, valores declarados y supuestos compartidos definen cómo se trabaja. Una cultura coherente da identidad, reduce conflictos y mejora el compromiso y la calidad del trabajo.</p>
+<div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid #5E7B94; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">En Mind &amp; Technology</p>
+<p style="margin: 0; font-size: 15px">Nuestra cultura gira en torno al aprendizaje, el uso ético de la IA y la colaboración entre docentes y estudiantes.</p>
+</div>
+</article>
+
+<article style="min-width: 0; background: #05333F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Max Weber</p>
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Estructura y roles</h4>
+<p style="margin: 0">Una jerarquía clara, reglas escritas y funciones definidas dan orden y previsibilidad, y aceleran las decisiones. Si se vuelve rígida, frena la innovación.</p>
+<div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid #5E7B94; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">En Mind &amp; Technology</p>
+<p style="margin: 0; font-size: 15px">Docentes, estudiantes e instituciones tienen roles definidos y reglas de uso claras dentro de la plataforma.</p>
+</div>
+</article>
+
+<article style="min-width: 0; background: #05333F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Elton Mayo</p>
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Grupos informales y motivación</h4>
+<p style="margin: 0">Además del organigrama existen redes de amistad y confianza. Cuando la organización las reconoce, aumentan la motivación, la cooperación y la productividad.</p>
+<div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid #5E7B94; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">En Mind &amp; Technology</p>
+<p style="margin: 0; font-size: 15px">Los docentes que comparten materiales forman comunidades de práctica; escucharlas mejora la plataforma.</p>
+</div>
+</article>
+
+<article style="min-width: 0; background: #05333F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">French y Raven</p>
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Liderazgo y poder</h4>
+<p style="margin: 0">El poder se apoya en la legitimidad, la experiencia, la recompensa o la coerción. Un liderazgo basado en la experiencia y el ejemplo genera más compromiso que el basado en la imposición.</p>
+<div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid #5E7B94; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">En Mind &amp; Technology</p>
+<p style="margin: 0; font-size: 15px">Orienta quien conoce el tema: la experiencia pesa más que el cargo.</p>
+</div>
+</article>
+
+<article style="min-width: 0; background: #05333F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Mark Granovetter</p>
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Comunicación y redes sociales</h4>
+<p style="margin: 0">La información circula por redes de relaciones. Los vínculos débiles acercan ideas nuevas y la comunicación abierta reduce errores, acelera la coordinación y favorece la innovación.</p>
+<div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid #5E7B94; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">En Mind &amp; Technology</p>
+<p style="margin: 0; font-size: 15px">La plataforma conecta a docentes, estudiantes e instituciones, y la información fluye en ambos sentidos.</p>
+</div>
+</article>
+
+<article style="min-width: 0; background: #05333F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Émile Durkheim</p>
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Cohesión y normas</h4>
+<p style="margin: 0">Cuando las normas son claras y compartidas, cada persona sabe qué se espera de ella y el equipo coopera. Sin ellas aparece la anomia: desorientación, desgaste y baja productividad.</p>
+<div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid #5E7B94; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">En Mind &amp; Technology</p>
+<p style="margin: 0; font-size: 15px">Las normas de integridad académica dejan claro qué se espera de cada usuario de la plataforma.</p>
+</div>
+</article>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ETNOGRAFIA -->
+<section id="etnografia" style="border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+
+<div style="display: flex; flex-direction: column; gap: 20px; max-width: 760px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #99CCFF">Estudio etnográfico</p>
+<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #FFFFFF; text-wrap: balance">Cómo vive <span style="color: #99CCFF">nuestra comunidad</span></h2>
+<p style="margin: 0">La etnografía estudia a un grupo desde dentro: observa lo que hace, lo que dice y lo que valora en su entorno natural. Así describimos la cultura de Mind &amp; Technology.</p>
+</div>
+
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px" aria-label="Métodos de investigación">
+<li style="border: 1px solid #5E7B94; border-radius: 999px; padding: 8px 18px; font-family: Poppins, sans-serif; font-size: 15px; color: #FFFFFF">Observación participante</li>
+<li style="border: 1px solid #5E7B94; border-radius: 999px; padding: 8px 18px; font-family: Poppins, sans-serif; font-size: 15px; color: #FFFFFF">Entrevistas a docentes y estudiantes</li>
+<li style="border: 1px solid #5E7B94; border-radius: 999px; padding: 8px 18px; font-family: Poppins, sans-serif; font-size: 15px; color: #FFFFFF">Diario de campo</li>
+<li style="border: 1px solid #5E7B94; border-radius: 999px; padding: 8px 18px; font-family: Poppins, sans-serif; font-size: 15px; color: #FFFFFF">Análisis de símbolos y materiales</li>
+</ul>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px">
+
+<article style="min-width: 0; background: #08424F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #99CCFF">Actores y roles</h3>
+<p style="margin: 0">Cuatro grupos conviven en la comunidad: los docentes, que comparten materiales de estudio; los estudiantes, que se preparan para sus exámenes; las instituciones, que organizan los contenidos; y el equipo fundador, de cinco integrantes, que sostiene la plataforma.</p>
+</article>
+
+<article style="min-width: 0; background: #08424F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #99CCFF">Lenguaje y símbolos</h3>
+<p style="margin: 0">El lema "Educando al futuro" resume la identidad. El logo une un birrete y un libro abierto, y la paleta de azul petróleo y celeste transmite calma y confianza. Se habla de materiales de estudio, preparación y uso responsable.</p>
+</article>
+
+<article style="min-width: 0; background: #08424F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #99CCFF">Prácticas y rituales</h3>
+<p style="margin: 0">Los docentes publican y actualizan materiales. Los estudiantes practican con herramientas de IA y reciben recomendaciones de estudio. Antes de un examen, la comunidad se organiza para repasar. El equipo revisa el avance y escucha comentarios.</p>
+</article>
+
+<article style="min-width: 0; background: #08424F; border-radius: 8px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #99CCFF">Espacios y artefactos</h3>
+<p style="margin: 0">El espacio de encuentro es digital: la plataforma, este sitio web y los canales del equipo. Los artefactos principales son los materiales de estudio, las recomendaciones de la IA y las normas de uso responsable.</p>
+</article>
+
+</div>
+
+<p style="margin: 0; max-width: 64ch; font-family: Poppins, sans-serif; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: #FFFFFF">Lo que observamos: una comunidad que aprende compartiendo, donde la tecnología acompaña y no reemplaza el esfuerzo de estudiar.</p>
+
+</div>
+</section>
+
+<!-- AXIOLOGIA -->
+<section id="axiologia" style="background: #08424F; border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 56px">
+
+<div style="display: flex; flex-direction: column; gap: 20px; max-width: 760px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #99CCFF">Estudio axiológico</p>
+<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #FFFFFF; text-wrap: balance">Los valores que <span style="color: #99CCFF">guían</span> las decisiones</h2>
+<p style="margin: 0">La axiología estudia qué valores existen, de qué tipo son y cómo se ordenan cuando hay que elegir. Aquí mostramos cómo los valores de Mind &amp; Technology se convierten en conductas que se pueden observar.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 20px">
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Jerarquía de valores, de mayor a menor prioridad</h3>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; counter-reset: prioridad">
+<li style="min-width: 0; background: #05333F; border-radius: 8px; padding: 20px 22px; display: flex; align-items: center; gap: 14px; font-family: Poppins, sans-serif; font-size: 20px; color: #FFFFFF"><span style="color: #99CCFF; font-weight: 600; font-size: 28px">1</span>Ética</li>
+<li style="min-width: 0; background: #05333F; border-radius: 8px; padding: 20px 22px; display: flex; align-items: center; gap: 14px; font-family: Poppins, sans-serif; font-size: 20px; color: #FFFFFF"><span style="color: #99CCFF; font-weight: 600; font-size: 28px">2</span>Seguridad</li>
+<li style="min-width: 0; background: #05333F; border-radius: 8px; padding: 20px 22px; display: flex; align-items: center; gap: 14px; font-family: Poppins, sans-serif; font-size: 20px; color: #FFFFFF"><span style="color: #99CCFF; font-weight: 600; font-size: 28px">3</span>Accesibilidad</li>
+<li style="min-width: 0; background: #05333F; border-radius: 8px; padding: 20px 22px; display: flex; align-items: center; gap: 14px; font-family: Poppins, sans-serif; font-size: 20px; color: #FFFFFF"><span style="color: #99CCFF; font-weight: 600; font-size: 28px">4</span>Innovación</li>
+</ol>
+</div>
+
+<div style="display: flex; flex-direction: column">
+
+<div class="fila" style="display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 28px 0; border-top: 1px solid #5E7B94">
+<div style="flex: 0 0 200px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Ética</h4>
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Valor moral</p>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0">Un uso transparente y responsable de la inteligencia artificial.</p>
+<p style="margin: 0; font-size: 15px; color: #99BBDD">Cómo se nota: reglas de uso claras y herramientas que apoyan el estudio sin sustituir el trabajo del estudiante.</p>
+</div>
+</div>
+
+<div class="fila" style="display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 28px 0; border-top: 1px solid #5E7B94">
+<div style="flex: 0 0 200px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Seguridad</h4>
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Valor de protección</p>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0">Cuidar los datos de las personas y la información académica.</p>
+<p style="margin: 0; font-size: 15px; color: #99BBDD">Cómo se nota: protección de los datos de los usuarios y resguardo de los materiales de los docentes frente al plagio.</p>
+</div>
+</div>
+
+<div class="fila" style="display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 28px 0; border-top: 1px solid #5E7B94">
+<div style="flex: 0 0 200px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Accesibilidad</h4>
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Valor social</p>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0">Que estudiantes y docentes de cualquier nivel y lugar puedan usar la plataforma.</p>
+<p style="margin: 0; font-size: 15px; color: #99BBDD">Cómo se nota: lenguaje sencillo, diseño que se adapta a cualquier pantalla y contenidos para todos los niveles académicos.</p>
+</div>
+</div>
+
+<div class="fila" style="display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 28px 0; border-top: 1px solid #5E7B94; border-bottom: 1px solid #5E7B94">
+<div style="flex: 0 0 200px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<h4 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 24px; color: #FFFFFF">Innovación</h4>
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Valor intelectual</p>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0">Mejorar de forma continua con nuevas tecnologías y metodologías educativas.</p>
+<p style="margin: 0; font-size: 15px; color: #99BBDD">Cómo se nota: incorporación constante de herramientas de IA y ajustes a partir de lo que cuentan docentes y estudiantes.</p>
+</div>
+</div>
+
+</div>
+
+<article style="min-width: 0; background: #05333F; border-radius: 8px; padding: 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; max-width: 860px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Dilema axiológico</p>
+<h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 28px; color: #FFFFFF">¿Hasta dónde puede ayudar la IA?</h3>
+<p style="margin: 0">La inteligencia artificial puede explicar, resumir y practicar con el estudiante, pero no debería resolver una evaluación por él. Cuando la innovación y la integridad académica chocan, prevalece la integridad.</p>
+</article>
+
+</div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo" style="border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; color: #99CCFF; text-wrap: balance">Integrantes</h2>
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<li style="min-width: 0; background: #08424F; border-radius: 8px; padding: 22px 24px; font-family: Poppins, sans-serif; font-size: 18px; color: #FFFFFF">Alison Borrallas Gonzalez</li>
+<li style="min-width: 0; background: #08424F; border-radius: 8px; padding: 22px 24px; font-family: Poppins, sans-serif; font-size: 18px; color: #FFFFFF">Humberto Aguilar Sanchez</li>
+<li style="min-width: 0; background: #08424F; border-radius: 8px; padding: 22px 24px; font-family: Poppins, sans-serif; font-size: 18px; color: #FFFFFF">Christian Scott Gabbert</li>
+<li style="min-width: 0; background: #08424F; border-radius: 8px; padding: 22px 24px; font-family: Poppins, sans-serif; font-size: 18px; color: #FFFFFF">Flavio Francisco Ordoñez Ramirez</li>
+<li style="min-width: 0; background: #08424F; border-radius: 8px; padding: 22px 24px; font-family: Poppins, sans-serif; font-size: 18px; color: #FFFFFF">Jose Gustavo Guzman Montejo</li>
+</ul>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top: 3px solid #5E7B94">
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<p style="margin: 0; font-family: Poppins, sans-serif; font-size: 20px; color: #FFFFFF">Mind &amp; Technology <span style="color: #99CCFF">· Educando al futuro</span></p>
+<a href="#inicio" style="font-family: Poppins, sans-serif; font-size: 15px; font-weight: 500; padding: 10px 0">Volver al inicio</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
