@@ -20,8 +20,13 @@ a:focus-visible{outline:2px solid #99CCFF;outline-offset:3px}
 html{scroll-behavior:smooth}
 .tab{font-family:Poppins,sans-serif;font-size:16px;font-weight:500;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid #5E7B94;background:transparent;color:#FFFFFF;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
 .tab:hover{border-color:#99CCFF}
-.tab[aria-pressed="true"]{background:#99CCFF;border-color:#99CCFF;color:#05333F}
-.tab:focus-visible{outline:2px solid #99CCFF;outline-offset:3px}
+.tab{display:inline-flex;align-items:center;box-sizing:border-box}
+.cc{position:relative}
+.cc input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.cc .panel{display:none;flex-direction:column;gap:14px}
+#c-alison:checked ~ .panels #p-alison,#c-humberto:checked ~ .panels #p-humberto,#c-christian:checked ~ .panels #p-christian,#c-flavio:checked ~ .panels #p-flavio,#c-gustavo:checked ~ .panels #p-gustavo,.cc:not(:has(input:checked)) .panels #p-alison{display:flex}
+#c-alison:checked ~ .tabs label[for="c-alison"],#c-humberto:checked ~ .tabs label[for="c-humberto"],#c-christian:checked ~ .tabs label[for="c-christian"],#c-flavio:checked ~ .tabs label[for="c-flavio"],#c-gustavo:checked ~ .tabs label[for="c-gustavo"],.cc:not(:has(input:checked)) .tabs label[for="c-alison"]{background:#99CCFF;border-color:#99CCFF;color:#05333F}
+#c-alison:focus-visible ~ .tabs label[for="c-alison"],#c-humberto:focus-visible ~ .tabs label[for="c-humberto"],#c-christian:focus-visible ~ .tabs label[for="c-christian"],#c-flavio:focus-visible ~ .tabs label[for="c-flavio"],#c-gustavo:focus-visible ~ .tabs label[for="c-gustavo"]{outline:2px solid #99CCFF;outline-offset:3px}
 @media (prefers-reduced-motion:no-preference){.panel{animation:rise .5s ease backwards}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes drift{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(0,-12px) rotate(5deg)}}
@@ -458,53 +463,47 @@ article:hover,#equipo li:hover{transform:translateY(-6px)}
 <p style="margin: 0">Cada integrante comparte lo que aprendió al construir Mind &amp; Technology. Elige un nombre para leer su conclusión.</p>
 </div>
 
-<div role="group" aria-label="Integrantes del equipo" style="display: flex; flex-wrap: wrap; gap: 12px">
-<button type="button" class="tab" aria-pressed="{{ sel_alison }}" onClick="{{ pick_alison }}">Alison Borrallas</button>
-<button type="button" class="tab" aria-pressed="{{ sel_humberto }}" onClick="{{ pick_humberto }}">Humberto Aguilar</button>
-<button type="button" class="tab" aria-pressed="{{ sel_christian }}" onClick="{{ pick_christian }}">Christian Scott</button>
-<button type="button" class="tab" aria-pressed="{{ sel_flavio }}" onClick="{{ pick_flavio }}">Flavio Ordoñez</button>
-<button type="button" class="tab" aria-pressed="{{ sel_gustavo }}" onClick="{{ pick_gustavo }}">Gustavo Guzman</button>
+<div class="cc" style="display: flex; flex-direction: column; gap: 40px">
+<input type="radio" name="integrante" id="c-alison" aria-label="Alison Borrallas">
+<input type="radio" name="integrante" id="c-humberto" aria-label="Humberto Aguilar">
+<input type="radio" name="integrante" id="c-christian" aria-label="Christian Scott">
+<input type="radio" name="integrante" id="c-flavio" aria-label="Flavio Ordoñez">
+<input type="radio" name="integrante" id="c-gustavo" aria-label="Gustavo Guzman">
+<div class="tabs" role="group" aria-label="Integrantes del equipo" style="display: flex; flex-wrap: wrap; gap: 12px">
+<label class="tab" for="c-alison">Alison Borrallas</label>
+<label class="tab" for="c-humberto">Humberto Aguilar</label>
+<label class="tab" for="c-christian">Christian Scott</label>
+<label class="tab" for="c-flavio">Flavio Ordoñez</label>
+<label class="tab" for="c-gustavo">Gustavo Guzman</label>
 </div>
-
-<sc-if value="{{ sel_alison }}" hint-placeholder-val="{{ true }}">
-<div class="panel" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<div class="panels">
+<div class="panel" id="p-alison" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box">
 <p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Conclusión individual</p>
 <h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 28px; color: #FFFFFF">Alison Borrallas Gonzalez</h3>
 <p style="margin: 0; max-width: 62ch">Al desarrollar este proyecto entendí que una empresa no es solo un producto, sino un sistema social. Los estudios sociológicos me mostraron que la cultura, los roles y la comunicación influyen directamente en el desempeño. Para Mind &amp; Technology, cuidar a las personas que la forman es tan importante como cuidar la tecnología.</p>
 </div>
-</sc-if>
-
-<sc-if value="{{ sel_humberto }}" hint-placeholder-val="{{ false }}">
-<div class="panel" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<div class="panel" id="p-humberto" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box">
 <p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Conclusión individual</p>
 <h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 28px; color: #FFFFFF">Humberto Aguilar Sanchez</h3>
 <p style="margin: 0; max-width: 62ch">Este trabajo me ayudó a ver cómo la estructura y las reglas claras ordenan a una organización sin volverla rígida. En una plataforma educativa, definir bien el papel de docentes, estudiantes e instituciones evita confusiones y facilita el aprendizaje. Aprendí que la organización también se diseña.</p>
 </div>
-</sc-if>
-
-<sc-if value="{{ sel_christian }}" hint-placeholder-val="{{ false }}">
-<div class="panel" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<div class="panel" id="p-christian" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box">
 <p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Conclusión individual</p>
 <h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 28px; color: #FFFFFF">Christian Scott Gabbert</h3>
 <p style="margin: 0; max-width: 62ch">Lo que más me llamó la atención fue el estudio etnográfico, porque obliga a observar a la comunidad antes de tomar decisiones. Entender cómo estudian y se comunican docentes y estudiantes permite mejorar la plataforma con base en su realidad. Una buena tecnología educativa nace de escuchar a sus usuarios.</p>
 </div>
-</sc-if>
-
-<sc-if value="{{ sel_flavio }}" hint-placeholder-val="{{ false }}">
-<div class="panel" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<div class="panel" id="p-flavio" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box">
 <p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Conclusión individual</p>
 <h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 28px; color: #FFFFFF">Flavio Francisco Ordoñez Ramirez</h3>
 <p style="margin: 0; max-width: 62ch">Concluyo que los valores deben guiar las decisiones y no quedarse en un cartel. El estudio axiológico nos mostró que la ética, la seguridad, la accesibilidad y la innovación pueden entrar en conflicto, y que hay que decidir cuál pesa más. Para nosotros, la integridad académica va primero.</p>
 </div>
-</sc-if>
-
-<sc-if value="{{ sel_gustavo }}" hint-placeholder-val="{{ false }}">
-<div class="panel" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<div class="panel" id="p-gustavo" style="background: #05333F; border-radius: 8px; padding: 36px; max-width: 860px; box-sizing: border-box">
 <p style="margin: 0; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #99CCFF">Conclusión individual</p>
 <h3 style="margin: 0; font-family: Poppins, sans-serif; font-weight: 500; font-size: 28px; color: #FFFFFF">Jose Gustavo Guzman Montejo</h3>
 <p style="margin: 0; max-width: 62ch">Este proyecto me dejó claro que la inteligencia artificial en la educación debe acompañar, no reemplazar, el esfuerzo del estudiante. Si se usa con responsabilidad, puede personalizar el estudio y hacerlo más accesible. Trabajar en equipo con los fundamentos sociales y los valores que investigamos hizo que la idea fuera más sólida.</p>
 </div>
-</sc-if>
+</div>
+</div>
 
 </div>
 </section>
@@ -567,13 +566,7 @@ article:hover,#equipo li:hover{transform:translateY(-6px)}
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
 class Component extends DCLogic {
 renderVals() {
-const who = (this.state && this.state.who) || 'alison';
-const out = {};
-['alison', 'humberto', 'christian', 'flavio', 'gustavo'].forEach((id) => {
-out['sel_' + id] = who === id;
-out['pick_' + id] = () => this.setState({ who: id });
-});
-return out;
+return {};
 }
 }
 </script>
